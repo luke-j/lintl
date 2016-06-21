@@ -1,0 +1,56 @@
+{
+  "name": "lint-gen",
+  "description": "",
+  "author": "",
+  "scripts": {
+    "watchify": "watchify -vd -p browserify-hmr -e src/main.js -o public/app.js",
+    "serve": "http-server -c 1 -a localhost",
+    "dev": "npm-run-all --parallel watchify serve",
+    "build": "cross-env NODE_ENV=production browserify -e src/main.js | uglifyjs -c warnings=false -m > public/app.js",
+    "test": "karma start test/karma.conf.js"
+  },
+  "browserify": {
+    "transform": [
+      "vueify",
+      "babelify"
+    ]
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "bootswatch": "^3.3.6",
+    "clipboard": "^1.5.10",
+    "fastclick": "^1.0.6",
+    "font-awesome": "^4.6.1",
+    "highlight.js": "^9.3.0",
+    "vue": "^1.0.0",
+    "vue-resource": "^0.7.0",
+    "vue-router": "^0.7.13"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-plugin-transform-runtime": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "babel-preset-stage-2": "^6.0.0",
+    "babel-runtime": "^5.8.0",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "browserify-hmr": "^0.3.1",
+    "cross-env": "^1.0.5",
+    "eslint": "^1.10.3",
+    "eslint-plugin-html": "^1.1.0",
+    "http-server": "^0.9.0",
+    "karma": "^0.13.22",
+    "karma-browserify": "^5.0.5",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "less": "^2.6.1",
+    "npm-run-all": "^1.6.0",
+    "phantomjs": "^2.1.7",
+    "proxyquireify": "^3.0.1",
+    "uglify-js": "^2.5.0",
+    "vue-hot-reload-api": "^1.2.2",
+    "vueify": "^8.0.0",
+    "vueify-insert-css": "^1.0.0",
+    "watchify": "^3.4.0"
+  }
+}

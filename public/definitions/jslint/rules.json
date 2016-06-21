@@ -1,0 +1,230 @@
+{
+	"rules": [
+		{
+			"name": "bitwise",
+			"link" : "http://www.jslint.com/help.html",
+			"disable": "/*ignore jslint start*/\n...\n/*ignore jslint end*/",
+			"description": "The bitwise operators are rarely used in JavaScript programs, so it is usually more likely that & is a mistyping of &&",
+			"options": [
+				{
+					"value": true,
+					"description": "Allow bitwise operators",
+					"recommended": false,
+					"example": [
+						"var x = 0;",
+						"var y = 1;",
+						"",
+						"var bitwiseOr = x|y;",
+						"var bitwiseAnd = x&y;",
+						"var bitwiseXor = x^y;",
+						"var bitwiseNot = ~x;",
+						"var rShift = x>>y;",
+						"var lShift = x<<y;"
+					]
+				},
+				{
+					"value": false,
+					"description": "Do not allow bitwise operators",
+					"recommended": false,
+					"example": [
+						"var x = 0;",
+						"var y = 1;",
+						"",
+						"var bitwiseOr = x|y;     // error",
+						"var bitwiseAnd = x&y;    // error",
+						"var bitwiseXor = x^y;    // error",
+						"var bitwiseNot = ~x;     // error",
+						"var rShift = x>>y;       // error",
+						"var lShift = x<<y;       // error"
+					]
+				}
+			]
+		},
+		{
+			"name": "eval",
+			"link" : "http://www.jslint.com/help.html",
+			"disable": "/*ignore jslint start*/\n...\n/*ignore jslint end*/",
+			"description": "The eval function evaluates string literals as javascript. In the past, the eval function was the most misused feature of the language.",
+			"options": [
+				{
+					"value": true,
+					"description": "Allow eval",
+					"recommended": false,
+					"example": [
+						"var func = \"(function (x, y) {return x + y;})(1, 1);\"",
+						"",
+						"eval(func);"
+					]
+				},
+				{
+					"value": false,
+					"description": "Do not allow eval",
+					"recommended": false,
+					"example": [
+						"var func = \"(function (x, y) {return x + y;})(1, 1);\"",
+						"",
+						"eval(func);    // error"
+					]
+				}
+			]
+		},
+		{
+			"name": "for",
+			"link" : "http://www.jslint.com/help.html",
+			"disable": "/*ignore jslint start*/\n...\n/*ignore jslint end*/",
+			"description": "For statements iterate over enumerable sets. It is possible to replace for statements with methods like Array.forEach.",
+			"options": [
+				{
+					"value": true,
+					"description": "Allow for statements",
+					"recommended": false,
+					"example": [
+						"for(var x = 0; x < arr.length; x++) {",
+						"    // ...",
+						"}"
+					]
+				},
+				{
+					"value": true,
+					"description": "Do not allow for statements",
+					"recommended": false,
+					"example": [
+						"for(var x = 0; x < arr.length; x++) {    // error",
+						"    // ...",
+						"}",
+						"",
+						"// prefer",
+						"arr.forEach(function (el, index) {",
+						"    // ...",
+						"});"
+					]
+				}
+			]
+		},
+		{
+			"name": "fudge",
+			"link" : "http://www.jslint.com/help.html",
+			"disable": "/*ignore jslint start*/\n...\n/*ignore jslint end*/",
+			"description": "Most text editors start numbering lines and columns at one. Use this option to start the numbering at one in ESLint reports, rather than zero.",
+			"options": [
+				{
+					"value": false,
+					"description": "Start reporting at line 0",
+					"recommended": false,
+					"example": [
+						"var x = true;        // line 0",
+						"var y = 'string';    // line 1",
+						"                     // line 2",
+						"return x && y;       // line 3"
+					]
+				},
+				{
+					"value": true,
+					"description": "Start reporting at line 1",
+					"recommended": false,
+					"example": [
+						"var x = true;        // line 1",
+						"var y = 'string';    // line 2",
+						"                     // line 3",
+						"return x && y;       // line 4"
+					]
+				}
+			]
+		},
+		{
+			"name": "multivar",
+			"link" : "http://www.jslint.com/help.html",
+			"disable": "/*ignore jslint start*/\n...\n/*ignore jslint end*/",
+			"description": "Multiple variables can be declared with a single var, let or const statement. Variables can also have a var, let or const each.",
+			"options": [
+				{
+					"value": true,
+					"description": "Allow multiple declarations",
+					"recommended": false,
+					"example": [
+						"var x, y, z;"
+					]
+				},
+				{
+					"value": true,
+					"description": "Do not allow multiple declarations",
+					"recommended": false,
+					"example": [
+						"var x, y, z; // error",
+						"",
+						"// prefer",
+						"var x;",
+						"var y;",
+						"var z;"
+					]
+				}
+			]
+		},
+		{
+			"name": "this",
+			"link" : "http://www.jslint.com/help.html",
+			"disable": "/*ignore jslint start*/\n...\n/*ignore jslint end*/",
+			"description": "The 'this' keyword refers to a particular context. It can refer to a global context, or function context, and can vary depending on how a function is called.",
+			"options": [
+				{
+					"value": true,
+					"description": "Allow the 'this' keyword",
+					"recommended": false,
+					"example": [
+						"var car = {",
+						"    wheels: 4,",
+						"    numWheels: function () {",
+						"        return this.wheels;",
+						"    }",
+						"};"
+					]
+				},
+				{
+					"value": false,
+					"description": "Do not allow the 'this' keyword",
+					"recommended": false,
+					"example": [
+						"var car = {",
+						"    wheels: 4,",
+						"    numWheels: function () {",
+						"        return this.wheels;    // error",
+						"    }",
+						"};"
+					]
+				}
+			]
+		},
+		{
+			"name": "white",
+			"link" : "http://www.jslint.com/help.html",
+			"disable": "/*ignore jslint start*/\n...\n/*ignore jslint end*/",
+			"description": "ESLint enforces whitespace rules within statements and expressions.",
+			"options": [
+				{
+					"value": false,
+					"description": "Enforce whitespace rules",
+					"recommended": false,
+					"example": [
+						"function add(x, y) {",
+						"    return x+y;      // error",
+						"}",
+						"",
+						"add(1, 1) === 2;"
+					]
+				},
+				{
+					"value": true,
+					"description": "Do not enforce whitespace rules",
+					"recommended": false,
+					"example": [
+						"function add(x, y) {",
+						"    return x+y;",
+						"}",
+						"",
+						"add(1, 1) === 2;"
+					]
+				}
+			]
+		}
+	]
+}

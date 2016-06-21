@@ -1,0 +1,26 @@
+{
+	"link": "http://jshint.com/docs/options/#environments",
+	"environments": [
+		"browser",
+		"browserify",
+		"couch",
+		"devel",
+		"dojo",
+		"jasmine",
+		"jquery",
+		"mocha",
+		"module",
+		"mootools",
+		"node",
+		"nonstandard",
+		"phantom",
+		"prototypejs",
+		"qunit",
+		"rhino",
+		"shelljs",
+		"typed",
+		"worker",
+		"wsh",
+		"yui"
+	]
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" id="app">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Lintl is a UI designed to help generate static analysis config files">
+	<title v-text="title"></title>
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+  		<div class="container-fluid">
+    		<div class="navbar-header">
+      			<a class="navbar-brand" href="#" v-link="'/'">Lintl</a>
+    		</div>
+      		<ul class="nav navbar-nav navbar-right">
+        		<li>
+					<a href="https://github.com/luke-j/lintl" class="github"><i class="fa fa-github"></i></a>
+				</li>
+      		</ul>
+  		</div>
+	</nav>
+
+	<main>
+		<router-view :config.sync="config" :title.sync="title"></router-view>
+	</main>
+
+	<footer>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12">
+					<hr>
+					<span class="pull-left">Found an error? Want to suggest an edit? <a href="">Post an issue here.</a></span>
+					<a href="https://github.com/luke-j/lintl" class="github pull-right"><i class="fa fa-github"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<script src="/app.js"></script>
+</body>
+</html>

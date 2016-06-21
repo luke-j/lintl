@@ -1,0 +1,1473 @@
+{
+	"rules": [
+		{
+			"name": "bitwise",
+			"link": "http://jshint.com/docs/options/#bitwise",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "The bitwise operators are rarely used in JavaScript programs, so it is usually more likely that & is a mistyping of &&",
+			"options": [
+				{
+					"value": false,
+					"description": "Allow bitwise operators",
+					"recommended": false,
+					"example": [
+						"var x = 0;",
+						"var y = 1;",
+						"",
+						"var bitwiseOr = x|y;",
+						"var bitwiseAnd = x&y;",
+						"var bitwiseXor = x^y;",
+						"var bitwiseNot = ~x;",
+						"var rShift = x>>y;",
+						"var lShift = x<<y;"
+					]
+				},
+				{
+					"value": true,
+					"description": "Do not allow bitwise operators",
+					"recommended": false,
+					"example": [
+						"var x = 0;",
+						"var y = 1;",
+						"",
+						"var bitwiseOr = x|y;     // error",
+						"var bitwiseAnd = x&y;    // error",
+						"var bitwiseXor = x^y;    // error",
+						"var bitwiseNot = ~x;     // error",
+						"var rShift = x>>y;       // error",
+						"var lShift = x<<y;       // error"
+					]
+				}
+			]
+		},
+		{
+			"name": "curly",
+			"link": "http://jshint.com/docs/options/#curly",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "This option requires you to always put curly braces around blocks in loops and conditionals. In some circumstances, omitting curly braces can lead to bugs.",
+			"options": [
+				{
+					"value": true,
+					"description": "Require curly braces",
+					"recommended": false,
+					"example": [
+						"if (add(1, 1) === 2) // error",
+						"    success();",
+						"",
+						"// prefer",
+						"if (add(1, 1) === 2) {",
+						"    success();",
+						"}"
+					]
+				},
+				{
+					"value": false,
+					"description": "Do not require curly braces",
+					"recommended": false,
+					"example": [
+						"if (add(1, 1) === 2)",
+						"    success();"
+					]
+				}
+			]
+		},
+		{
+			"name": "eqeqeq",
+			"link": "http://jshint.com/docs/options/#eqeqeq",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "!= and == try to coerce values before comparing them, which can lead to some unexpected results. !== and === don't do any coercion, so they are generally safer.",
+			"options": [
+				{
+					"value": true,
+					"description": "Require strict equality",
+					"recommended": false,
+					"example": [
+						"var x = 1;",
+						"",
+						"// values are not equal",
+						"if (x === true) {",
+						"    // will never reach here",
+						"}"
+					]
+				},
+				{
+					"value": true,
+					"description": "Do not require strict equality",
+					"recommended": false,
+					"example": [
+						"var x = 1;",
+						"",
+						"// values are loosely equal",
+						"if (x == true) {",
+						"    // will reach here",
+						"}"
+					]
+				}
+			]
+		},
+		{
+			"name": "esversion",
+			"link": "http://jshint.com/docs/options/#esversion",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "This option is used to specify the ECMAScript version to which the code must adhere.",
+			"options": [
+				{
+					"value": 6,
+					"description": "Ecmascript 6",
+					"recommended": false,
+					"example": [
+						"import {Thing} from 'things';",
+						"",
+						"export default {",
+						"    func: (x, y, ...z) => {",
+						"        return x + y * z.length;",
+						"    }",
+					    "}"
+					]
+				},
+				{
+					"value": 5,
+					"description": "Ecmascript 5",
+					"recommended": false,
+					"example": [
+						"var obj = {",
+						"    get pi() {",
+						"        'use strict';",
+						"        return 3.14;",
+						"    }",
+						"};",
+						"",
+						"var obj2 = Object.create(obj);"
+					]
+				},
+				{
+					"value": 3,
+					"description": "Ecmascript 3",
+					"recommended": false,
+					"example": [
+						"try {",
+						"    var match = /&.*/g.test(myString);",
+						"",
+						"    if(!match) {",
+						"        throw new Error('Did not match');",
+						"    }",
+						"} catch(e) {",
+						"    console.log(e.message);",
+						"}"
+					]
+				}
+			]
+		},
+		{
+			"name": "forin",
+			"link": "http://jshint.com/docs/options/#forin",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "The for in statement allows for looping through the names of all of the properties of an object, including those inherited through the prototype chain. This behavior can lead to unexpected items in your object so it is generally safer t filter inherited properties out.",
+			"options": [
+				{
+					"value": true,
+					"description": "Require .hasOwnProperty() check",
+					"recommended": false,
+					"example": [
+						"for(var key in obj) {",
+						"    // error",
+						"}",
+						"",
+						"// prefer",
+						"for(var key in obj) {",
+						"    if(obj.hasOwnProperty(key)) {",
+						"        // ...",
+						"    }",
+						"}"
+					]
+				},
+				{
+					"value": false,
+					"description": "Do not require .hasOwnProperty() check",
+					"recommended": false,
+					"example": [
+						"for(var key in obj) {",
+						"    // ...",
+						"}"
+					]
+				}
+			]
+		},
+		{
+			"name": "freeze",
+			"link": "http://jshint.com/docs/options/#freeze",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "This options prohibits overwriting prototypes of native objects such as Array, Date etc.",
+			"options": [
+				{
+					"value": true,
+					"description": "Prohibit overwriting native objects",
+					"recommended": false,
+					"example": [
+						"// error",
+						"Array.prototype.forEach = function (arr) {",
+						"    // ...",
+						"}"
+					]
+				},
+				{
+					"value": false,
+					"description": "Allow overwriting native objects",
+					"recommended": false,
+					"example": [
+						"Array.prototype.forEach = function (arr) {",
+						"    // ...",
+						"}"
+					]
+				}
+			]
+		},
+		{
+			"name": "funcscope",
+			"link": "http://jshint.com/docs/options/#funcscope",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "This option suppresses warnings about declaring variables inside of control structures while accessing them later from the outside.",
+			"options": [
+				{
+					"value": false,
+					"description": "Prohibit the use of out-of-scope variables",
+					"recommended": false,
+					"example": [
+						"if (a === true) {",
+						"    var x = true;",
+						"}",
+						"",
+						"if (x === true) { // error - x is out of scope",
+						"    // ...",
+						"}"
+					]
+				},
+				{
+					"value": true,
+					"description": "Allow the use of out-of-scope variables",
+					"recommended": false,
+					"example": [
+						"if (a === true) {",
+						"    var x = true;",
+						"}",
+						"",
+						"if (x === true) {",
+						"    // ...",
+						"}"
+					]
+				}
+			]
+		},
+		{
+			"name": "futurehostile",
+			"link": "http://jshint.com/docs/options/#futurehostile",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "This option enables warnings about the use of identifiers which are defined in future versions of JavaScript.",
+			"options": [
+				{
+					"value": true,
+					"description": "Disallow future identifiers",
+					"recommended": false,
+					"example": [
+						"// ES3 environment",
+						"",
+						"function x() {",
+						"    return new Promise(function(resolve, reject) { // error",
+						"        resolve();",
+						"    });",
+						"}"
+					]
+				},
+				{
+					"value": true,
+					"description": "Allow future identifiers",
+					"recommended": false,
+					"example": [
+						"// ES3 environment",
+						"",
+						"function x() {",
+						"    return new Promise(function(resolve, reject) { // no error",
+						"        resolve();",
+						"    });",
+						"}"
+					]
+				}
+			]
+		},
+		{
+			"name": "iterator",
+			"link": "http://jshint.com/docs/options/#iterator",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "The __iterator__ property was a SpiderMonkey extension to JavaScript that could be used to create custom iterators that are compatible with JavaScript’s for in and for each constructs.",
+			"options": [
+				{
+					"value": true,
+					"description": "Allow __iterator__",
+					"recommended": false,
+					"example": [
+						"Obj.prototype.__iterator__ = function () {",
+						"    // ...",
+						"}"
+					]
+				},
+				{
+					"value": false,
+					"description": "Do not allow __iterator__",
+					"recommended": false,
+					"example": [
+						"Obj.prototype.__iterator__ = function () { // error",
+						"    // ...",
+						"}"
+					]
+				}
+			]
+		},
+		{
+			"name": "latedef",
+			"link": "http://jshint.com/docs/options/#latedef",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "This option prohibits the use of a variable before it was defined.",
+			"options": [
+				{
+					"value": true,
+					"description": "Prohibit late variable definitions",
+					"recommended": false,
+					"example": [
+						"function f(y) {",
+						"    // ...",
+						"",
+						"    if (x === y) {",
+						"        return z;",
+						"    }",
+						"",
+						"    var x; // error",
+						"}"
+					]
+				},
+				{
+					"value": true,
+					"description": "Allow late variable definitions",
+					"recommended": false,
+					"example": [
+						"function f(y) {",
+						"    // ...",
+						"",
+						"    if (x === y) {",
+						"        return z;",
+						"    }",
+						"",
+						"    var x;",
+						"}"
+					]
+				}
+			]
+		},
+		{
+			"name": "maxcomplexity",
+			"link": "http://jshint.com/docs/options/#maxcomplexity",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "This option lets you control cyclomatic complexity throughout your code. Cyclomatic complexity measures the number of linearly independent paths through a program's source code.",
+			"options": [
+				{
+					"value": 5,
+					"description": "Maximum Cyclomatic Complexity of 5",
+					"recommended": false,
+					"example": [
+						"// Cyclomatic Complexity = 5",
+						"",
+						"function f() {",
+						"    // ...",
+						"",
+						"    if(x) {",
+						"        if(y) {",
+						"            while(k) {",
+						"                if(z) {",
+						"                    // ...",
+						"                }",
+						"            }",
+						"        }",
+						"    }",
+						"}"
+					]
+				},
+				{
+					"value": 10,
+					"description": "Maximum Cyclomatic Complexity of 10",
+					"recommended": false,
+					"example": [
+						"// Cyclomatic Complexity = 10",
+						"",
+						"function f() {",
+						"    // ...",
+						"",
+						"    if(x) {",
+						"        var a = b || c;",
+						"        var d = e || f;",
+						"",
+						"        if(y) {",
+						"            if(a) {",
+						"                while (k) {",
+						"                    if (z) {",
+						"                        if(b) {",
+						"                            while(d) {",
+						"                                // ...",
+						"                            }",
+						"                        }",
+						"                    }",
+						"                }",
+						"            }",
+						"        }",
+						"    }",
+						"}"
+					]
+				},
+				{
+					"value": 15,
+					"description": "Maximum Cyclomatic Complexity of 15",
+					"recommended": false,
+					"example": [
+						"// Cyclomatic Complexity = 15",
+						"",
+						"function f() {",
+						"    // ...",
+						"",
+						"    if(x) {",
+						"        var a = b || c;",
+						"        var d = e || f;",
+						"",
+						"        if(y) {",
+						"            if(a) {",
+						"                while (k) {",
+						"                    if (z) {",
+						"                        if(b) {",
+						"                            while(d) {",
+						"                                // ...",
+						"                            }",
+						"                        } else if(s) {",
+						"                            // ..",
+						"                        }",
+						"                    } else if(t) {",
+						"                        // ...",
+						"                    }",
+						"                }",
+						"            } else if(r) {",
+						"                // ...",
+						"            }",
+						"        } else if(w) {",
+						"            // ...",
+						"        }",
+						"    } else if(h) {",
+						"        // ...",
+						"    }",
+						"}"
+					]
+				},
+				{
+					"value": false,
+					"description": "Do not restrict Cyclomatic Complexity",
+					"recommended": false,
+					"example": [
+						"// all Cyclomatic Complexity levels allowed"
+					]
+				}
+			]
+		},
+		{
+			"name": "maxdepth",
+			"link": "http://jshint.com/docs/options/#maxdepth",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "This option lets you control how nested do you want your blocks to be.",
+			"options": [
+				{
+					"value": 2,
+					"description": "Nest blocks a maximum of 2 times",
+					"recommended": false,
+					"example": [
+						"function f(x, y) {",
+						"    if(x) {",
+						"        if(y) {",
+						"            // error",
+						"        }",
+						"    }",
+						"}"
+					]
+				},
+				{
+					"value": 4,
+					"description": "Nest blocks a maximum of 4 times",
+					"recommended": false,
+					"example": [
+						"function f(x, y) {",
+						"    if(x) {",
+						"        if(y) {",
+						"            if(z) {",
+						"                if(k) {",
+						"                    // error",
+						"                }",
+						"            }",
+						"        }",
+						"    }",
+						"}"
+					]
+				},
+				{
+					"value": 6,
+					"description": "Nest blocks a maximum of 6 times",
+					"recommended": false,
+					"example": [
+						"function f(x, y) {",
+						"    if(x) {",
+						"        if(y) {",
+						"            if(z) {",
+						"                if(k) {",
+						"                    if(i) {",
+						"                        if(j) {",
+						"                            // error",
+						"                        }",
+						"                    }",
+						"                }",
+						"            }",
+						"        }",
+						"    }",
+						"}"
+					]
+				},
+				{
+					"value": false,
+					"description": "Do not restrict depth",
+					"recommended": false,
+					"example": [
+						"// all depths allowed"
+					]
+				}
+			]
+		},
+		{
+			"name": "maxparams",
+			"link": "http://jshint.com/docs/options/#maxparams",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "This option lets you set the max number of formal parameters allowed per function.",
+			"options": [
+				{
+					"value": 4,
+					"description": "Maximum of 4 formal parameters",
+					"recommended": false,
+					"example": [
+						"function f(x, y, z, w) {",
+						"    // ...",
+						"}"
+					]
+				},
+				{
+					"value": 6,
+					"description": "Maximum of 6 formal parameters",
+					"recommended": false,
+					"example": [
+						"function f(x, y, z, w, k, j) {",
+						"    // ...",
+						"}"
+					]
+				},
+				{
+					"value": 8,
+					"description": "Maximum of 8 formal parameters",
+					"recommended": false,
+					"example": [
+						"function f(x, y, z, w, k, j, i, l) {",
+						"    // ...",
+						"}"
+					]
+				},
+				{
+					"value": false,
+					"description": "Do not restrict parameters",
+					"recommended": false,
+					"example": [
+						"function f(x, y, z, w, k, j, i, l, a, b, c) {",
+						"    // ...",
+						"}"
+					]
+				}
+			]
+		},
+		{
+			"name": "maxstatements",
+			"link": "http://jshint.com/docs/options/#maxstatements",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "This option lets you set the max number of statements allowed per function.",
+			"options": [
+				{
+					"value": 6,
+					"description": "Maximum of 6 statements",
+					"recommended": false,
+					"example": [
+						"function f(x, y, z) {",
+						"    if(x) {",
+						"        var k;",
+						"        var i;",
+						"        var j;",
+						"",
+						"        if(y) {",
+						"            return null;",
+						"        }",
+						"    }",
+						"}"
+					]
+				},
+				{
+					"value": 10,
+					"description": "Maximum of 10 statements",
+					"recommended": false,
+					"example": [
+						"function f(x, y, z) {",
+						"    if(x) {",
+						"        var k;",
+						"        var i;",
+						"        var j;",
+						"",
+						"        if(y) {",
+						"            k = 10;",
+						"            i = 20;",
+						"            j = 30;",
+						"",
+						"            if(z) {",
+						"                return k + i;",
+						"            }",
+						"        }",
+						"    }",
+						"}"
+					]
+				},
+				{
+					"value": false,
+					"description": "Do not restrict statements",
+					"recommended": false,
+					"example": [
+						"// any amount of statements per function is allowed"
+					]
+				}
+			]
+		},
+		{
+			"name": "noarg",
+			"link": "http://jshint.com/docs/options/#noarg",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "arguments.caller and arguments.callee in javascript refers to the function which called the current function and the currently executing function, respectively.",
+			"options": [
+				{
+					"value": true,
+					"description": "Do not allow arguments.caller/callee",
+					"recommended": false,
+					"example": [
+						"function x () {",
+						"    return arguments.callee === x // error",
+						"}"
+					]
+				},
+				{
+					"value": false,
+					"description": "Allow arguments.caller/callee",
+					"recommended": false,
+					"example": [
+						"function x () {",
+						"    return arguments.callee === x // true",
+						"}"
+					]
+				}
+			]
+		},
+		{
+			"name": "nocomma",
+			"link": "http://jshint.com/docs/options/#nocomma",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "The comma operator evaluates a series of operands and returns the last in the series.",
+			"options": [
+				{
+					"value": true,
+					"description": "Do not allow the comma operator",
+					"recommended": false,
+					"example": [
+						"z = 1, y = 2, z = 3; // error"
+					]
+				},
+				{
+					"value": false,
+					"description": "Allow the comma operator",
+					"recommended": false,
+					"example": [
+						"z = 1, y = 2, z = 3; // returns 3"
+					]
+				}
+			]
+		},
+		{
+			"name": "nonbsp",
+			"link": "http://jshint.com/docs/options/#nonbsp",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "Non-breaking whitespace characters prevents a text from breaking into a new line; it can often be introduced to code accidentally",
+			"options": [
+				{
+					"value": false,
+					"description": "Allow non-breaking whitespace",
+					"recommended": false,
+					"example": [
+						"The car was travelling 100",
+						"km/h // Regular whitespace causes a break",
+						"",
+						"The car was travelling 100&nbsp;km/h // Non-breaking whitespace prevents a line break"
+					]
+				},
+				{
+					"value": true,
+					"description": "Do not allow non-breaking whitespace",
+					"recommended": false,
+					"example": [
+						"The car was travelling 100",
+						"km/h // Regular whitespace causes a break",
+						"",
+						"The car was travelling 100&nbsp;km/h // error"
+					]
+				}
+			]
+		},
+		{
+			"name": "nonew",
+			"link": "http://jshint.com/docs/options/#nonew",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "The new keyword calls a constructor. It can be considered bad practice to construct an object with \"new\" without assigning the result to a variable.",
+			"options": [
+				{
+					"value": true,
+					"description": "Disallow non-assigned constructors",
+					"recommended": false,
+					"example": [
+						"new MyClass();          // error",
+						"",
+						"MyClass;                // preferred",
+						"",
+						"var c = new MyClass(); // preferred"
+					]
+				},
+				{
+					"value": false,
+					"description": "Allow non-assigned constructors",
+					"recommended": false,
+					"example": [
+						"new MyClass();      // allowed",
+						"",
+						"MyClass;            // allowed",
+						"",
+						"var c = new MyClass // allowed"
+					]
+				}
+			]
+		},
+		{
+			"name": "notypeof",
+			"link": "http://jshint.com/docs/options/#notypeof",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "The \"typeof\" keyword can only produce a small pre-defined set of results, eg. \"function\".",
+			"options": [
+				{
+					"value": true,
+					"description": "Disallow weird typeof checks",
+					"recommended": false,
+					"example": [
+						"typeof func === \"fuction\" // error - expected \"function\""
+					]
+				},
+				{
+					"value": false,
+					"description": "Allow weird typeof checks",
+					"recommended": false,
+					"example": [
+						"typeof func === \"fuction\" // allowed"
+					]
+				}
+			]
+		},
+		{
+			"name": "shadow",
+			"link": "http://jshint.com/docs/options/#shadow",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "This option suppresses warnings about declaring a variable that had been already declared somewhere in the outer scope.",
+			"options": [
+				{
+					"value": false,
+					"description": "Check same scope only",
+					"recommended": false,
+					"example": [
+						"function x() {",
+						"    var car = new Car();",
+						"",
+						"    function go() {",
+						"        var car = new Car();",
+						"",
+						"        if(car.hasBrokenDown) {",
+						"            var car = null;          // error",
+						"            ...",
+						"        }",
+						"",
+						"        return car;",
+						"    }",
+						"    ...",
+						"}"
+					]
+				},
+				{
+					"value": "outer",
+					"description": "Check outer and inner scope",
+					"recommended": false,
+					"example": [
+						"function x() {",
+						"    var car = new Car();",
+						"",
+						"    function go() {",
+						"        var car = new Car();         // error",
+						"",
+						"        if(car.hasBrokenDown) {",
+						"            var car = null;          // error",
+						"            ...",
+						"        }",
+						"",
+						"        return car;",
+						"    }",
+						"    ...",
+						"}"
+					]
+				},
+				{
+					"value": true,
+					"description": "Allow variable shadowing",
+					"recommended": false,
+					"example": [
+						"function x() {",
+						"    var car = new Car();",
+						"",
+						"    function go() {",
+						"        var car = new Car();         // no error",
+						"",
+						"        if(car.hasBrokenDown) {",
+						"            var car = null;          // no error",
+						"            ...",
+						"        }",
+						"",
+						"        return car;",
+						"    }",
+						"    ...",
+						"}"
+					]
+				}
+			]
+		},
+		{
+			"name": "singleGroups",
+			"link": "http://jshint.com/docs/options/#singleGroups",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "This option controls the use of unnecessary grouping operators, or parenthesis",
+			"options": [
+				{
+					"value": true,
+					"description": "Do not allow unnecessary parenthesis",
+					"recommended": false,
+					"example": [
+						"var x = (1 + 1) * 4 / (2 + 2); // error - unnecessary"
+					]
+				},
+				{
+					"value": false,
+					"description": "Allow unnecessary parenthesis",
+					"recommended": false,
+					"example": [
+						"var x = (1 + 1) * 4 / (2 + 2);"
+					]
+				}
+			]
+		},
+		{
+			"name": "strict",
+			"link": "http://jshint.com/docs/options/#strict",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "This option requires that code be run in \"strict\" mode - a restricted version of JavaScript.",
+			"options": [
+				{
+					"value": "global",
+					"description": "Require \"use strict\"; globally",
+					"recommended": false,
+					"example": [
+						"\"use strict\";",
+						"(function() {",
+						"    ...",
+						"})();"
+					]
+				},
+				{
+					"value": "implied",
+					"description": "Assume a \"use strict\"; declaration",
+					"recommended": false,
+					"example": [
+						"(function() {",
+						"    ... // this code is linted as if it were in strict mode",
+						"})();"
+					]
+				},
+				{
+					"value": false,
+					"description": "Do not require strict mode",
+					"recommended": false,
+					"example": [
+						"(function() {",
+						"    ... // no strict error warnings",
+						"})();"
+					]
+				},
+				{
+					"value": true,
+					"description": "Require \"use strict\"; at function level",
+					"recommended": false,
+					"example": [
+						"(function() {",
+						"    \"use strict\"; // required at the function level",
+						"})();"
+					]
+				}
+			]
+		},
+		{
+			"name": "undef",
+			"link": "http://jshint.com/docs/options/#undef",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "This option prohibits the use of undefined variables",
+			"options": [
+				{
+					"value": true,
+					"description": "Do not allow undefined variables",
+					"recommended": false,
+					"example": [
+						"function x(y) {",
+						"    return y + myNum; // error - myNum was never defined",
+						"}"
+					]
+				},
+				{
+					"value": false,
+					"description": "Allow undefined variables",
+					"recommended": false,
+					"example": [
+						"function x(y) {",
+						"    return y + myNum; // no error",
+						"}"
+					]
+				}
+			]
+		},
+		{
+			"name": "unused",
+			"link": "http://jshint.com/docs/options/#unused",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "Warn if you declare a variable but never use it",
+			"options": [
+				{
+					"value": true,
+					"description": "Prevent unused variables",
+					"recommended": false,
+					"example": [
+						"function() {",
+						"    var x, y, z; // error - unused variable z",
+						"    ...",
+						"    return x + y;",
+						"}"
+					]
+				},
+				{
+					"value": false,
+					"description": "Allow unused variables",
+					"recommended": false,
+					"example": [
+						"function() {",
+						"    var x, y, z;",
+						"    ...",
+						"    return x + y;",
+						"}"
+					]
+				}
+			]
+		},
+		{
+			"name": "varstmt",
+			"link": "http://jshint.com/docs/options/#varstmt",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "ES6 provides two new ways to declare variables with \"let\" and \"const\". Both options may provide clarity over the traditional \"var\" variable declaration",
+			"options": [
+				{
+					"value": true,
+					"description": "Disallow \"var\" declarations",
+					"recommended": false,
+					"example": [
+						"function() {",
+						"    var x = 1; // error - x should be declared with let or const",
+						"    ...",
+						"}"
+					]
+				},
+				{
+					"value": true,
+					"description": "Allow \"var\" declarations",
+					"recommended": false,
+					"example": [
+						"function() {",
+						"    const y = 1;",
+						"    var x = 1;",
+						"    ...",
+						"}"
+					]
+				}
+			]
+		},
+		{
+			"name": "asi",
+			"link": "http://jshint.com/docs/options/#asi",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "Semicolons are optional in javascript, however, it is often good practice to always include them.",
+			"options": [
+				{
+					"value": true,
+					"description": "Relax semicolon requirements",
+					"recommended": false,
+					"example": [
+						"var car = new Car",
+						"car.wheels = 4",
+						"car.engine = 1"
+					]
+				},
+				{
+					"value": false,
+					"description": "Enforce semicolon requirements",
+					"recommended": false,
+					"example": [
+						"var car = new Car // warning - semicolon required",
+						"car.wheels = 4    // warning - semicolon required",
+						"car.engine = 1    // warning - semicolon required"
+					]
+				}
+			]
+		},
+		{
+			"name": "boss",
+			"link": "http://jshint.com/docs/options/#boss",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "It may be confusing to assign a variable within a conditional statement, however, it can sometimes be useful",
+			"options": [
+				{
+					"value": true,
+					"description": "Relax conditional-assignment rules",
+					"recommended": false,
+					"example": [
+						"for(var i = 0, x; x = y[x]; i++) {",
+						"    ...",
+						"}"
+					]
+				},
+				{
+					"value": false,
+					"description": "Enforce conditional-assignment rules",
+					"recommended": false,
+					"example": [
+						"for(var i = 0, x; x = y[x]; i++) { // warning - x cannot be defined here",
+						"    ...",
+						"}"
+					]
+				}
+			]
+		},
+		{
+			"name": "debug",
+			"link": "http://jshint.com/docs/options/#debug",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "Leaving debug statements in code can often be a mistake",
+			"options": [
+				{
+					"value": true,
+					"description": "Relax debug statement warnings",
+					"recommended": false,
+					"example": [
+						"console.debug(\"Something just happened\");"
+					]
+				},
+				{
+					"value": true,
+					"description": "Enforce debug statement warnings",
+					"recommended": false,
+					"example": [
+						"console.debug(\"Something just happened\"); // warning"
+					]
+				}
+			]
+		},
+		{
+			"name": "elision",
+			"link": "http://jshint.com/docs/options/#elision",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "Sparse arrays - or arrays which contain empty elements - are produced by an \"elision\" element within an array, and are often considered bad practice and may require time-consuming checks within methods like Array.forEach",
+			"options": [
+				{
+					"value": true,
+					"description": "Relax sparse array warnings",
+					"recommended": false,
+					"example": [
+						"var arr = [1, 2, 3, , , , 8, 9];"
+					]
+				},
+				{
+					"value": false,
+					"description": "Enforce sparse array warnings",
+					"recommended": false,
+					"example": [
+						"var arr = [1, 2, 3, , , , 8, 9]; // warning"
+					]
+				}
+			]
+		},
+		{
+			"name": "eqnull",
+			"link": "http://jshint.com/docs/options/#eqnull",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "Loose comparison checks against null can be useful, but are often confusing when undefined == null returns true",
+			"options": [
+				{
+					"value": true,
+					"description": "Relax null comparison warnings",
+					"recommended": false,
+					"example": [
+						"if(x == null) {",
+						"    ...",
+						"}"
+					]
+				},
+				{
+					"value": false,
+					"description": "Enforce null comparison warnings",
+					"recommended": false,
+					"example": [
+						"if(x == null) { // warning",
+						"    ...",
+						"}"
+					]
+				}
+			]
+		},
+		{
+			"name": "evil",
+			"link": "http://jshint.com/docs/options/#evil",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "Eval is often considered the most dangerous aspect of javascript due to its vulnerability to multiple attacks when included within code. It also prevents javascript engines like V8 from properly optimising code",
+			"options": [
+				{
+					"value": true,
+					"description": "Relax \"eval\" warnings",
+					"recommended": false,
+					"example": [
+						"var func = \"(function()({ ... });\";",
+						"eval(func);"
+					]
+				},
+				{
+					"value": false,
+					"description": "Enforce \"eval\" warnings",
+					"recommended": false,
+					"example": [
+						"var func = \"(function()({ ... });\";",
+						"eval(func); // warning"
+					]
+				}
+			]
+		},
+		{
+			"name": "lastsemic",
+			"link": "http://jshint.com/docs/options/#lastsemic",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "This option suppresses warnings about missing semicolons, but only when the semicolon is omitted for the last statement in a one-line block",
+			"options": [
+				{
+					"value": true,
+					"description": "Relax one-line missing semicolons",
+					"recommended": false,
+					"example": [
+						"var func = (function(str)({ return str.matches( ... ) })('string');"
+					]
+				},
+				{
+					"value": false,
+					"description": "Enforce one-line missing semicolons",
+					"recommended": false,
+					"example": [
+						"var func = (function(str)({ return str.matches( ... ) })('string'); // warning - missing semicolon after string.matches()"
+					]
+				}
+			]
+		},
+		{
+			"name": "loopfunc",
+			"link": "http://jshint.com/docs/options/#loopfunc",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "Functions within loops can often yield confusing results, it is often best avoiding a function within a loop",
+			"options": [
+				{
+					"value": true,
+					"description": "Relax functions-within-loops rule",
+					"recommended": false,
+					"example": [
+						"for(var x = 0; x < 50; x++) {",
+						"    var y = function () {",
+						"        ...",
+						"    };",
+						"}"
+					]
+				},
+				{
+					"value": false,
+					"description": "Enforce functions-within-loops rule",
+					"recommended": false,
+					"example": [
+						"for(var x = 0; x < 50; x++) {",
+						"    var y = function () { // warning",
+						"        ...",
+						"    };",
+						"}"
+					]
+				}
+			]
+		},
+		{
+			"name": "moz",
+			"link": "http://jshint.com/docs/options/#moz",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "This options tells JSHint that your code uses Mozilla JavaScript extensions",
+			"options": [
+				{
+					"value": true,
+					"description": "Using Mozilla JavaScript extensions",
+					"recommended": false,
+					"example": []
+				},
+				{
+					"value": false,
+					"description": "Not using Mozilla JavaScript extensions",
+					"recommended": false,
+					"example": []
+				}
+			]
+		},
+		{
+			"name": "noyield",
+			"link": "http://jshint.com/docs/options/#noyield",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "Generator functions without a \"yield\" statement is often a mistake",
+			"options": [
+				{
+					"value": true,
+					"description": "Relax yield rule",
+					"recommended": false,
+					"example": [
+						"function *x () {",
+						"    ...",
+						"}"
+					]
+				},
+				{
+					"value": false,
+					"description": "Enforce yield rule",
+					"recommended": false,
+					"example": [
+						"function *x () {",
+						"    ... // warning - no yield statement",
+						"}"
+					]
+				}
+			]
+		},
+		{
+			"name": "plusplus",
+			"link": "http://jshint.com/docs/options/#plusplus",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "Unary increment and decrement operators (++/--) can be performed by simple addition and deduction and are not strictly required",
+			"options": [
+				{
+					"value": true,
+					"description": "Relax unary operator rules",
+					"recommended": false,
+					"example": [
+						"x++;",
+						"x += 1;"
+					]
+				},
+				{
+					"value": false,
+					"description": "Enforce unary operator rules",
+					"recommended": false,
+					"example": [
+						"x++;    // warning",
+						"x += 1; // prefer"
+					]
+				}
+			]
+		},
+		{
+			"name": "proto",
+			"link": "http://jshint.com/docs/options/#proto",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "In JavaScript, the __proto__ is an accessor property which sets or gets the prototypal parent in the inheritance chain. It is often considered poor practice to use the property.",
+			"options": [
+				{
+					"value": true,
+					"description": "Relax __proto__ rule",
+					"recommended": false,
+					"example": [
+						"var myOtherObject = new Example();",
+						"",
+						"myObject.__proto__ = myOtherObject;",
+						"",
+						"myObject === myOtherObject // true"
+					]
+				},
+				{
+					"value": true,
+					"description": "Enforce __proto__ rule",
+					"recommended": false,
+					"example": [
+						"var myOtherObject = new Example();",
+						"",
+						"myObject.__proto__ = myOtherObject; // warning"
+					]
+				}
+			]
+		},
+		{
+			"name": "scripturl",
+			"link": "http://jshint.com/docs/options/#scripturl",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "Script-targeted URLs (eg. javascript: ... ) allow JavaScript execution instead of a http request. They are often considered bad practice",
+			"options": [
+				{
+					"value": true,
+					"description": "Relax Script-targeted URL rules",
+					"recommended": false,
+					"example": [
+						"var anchor = document.createElement('a');",
+						"anchor.href = 'javascript: ...';"
+					]
+				},
+				{
+					"value": false,
+					"description": "Relax Script-targeted URL rules",
+					"recommended": false,
+					"example": [
+						"var anchor = document.createElement('a');",
+						"anchor.href = 'javascript: ...';            // warning"
+					]
+				}
+			]
+		},
+		{
+			"name": "supernew",
+			"link": "http://jshint.com/docs/options/#supernew",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "The \"new\" keyword can be used with functions and alternate ways to create objects, arrays, etc.",
+			"options": [
+				{
+					"value": true,
+					"description": "Relax constructor rules",
+					"recommended": false,
+					"example": [
+						"function x () {",
+						"    ...",
+						"}",
+						"",
+						"var y = new x();"
+					]
+				},
+				{
+					"value": false,
+					"description": "Enforce constructor rules",
+					"recommended": false,
+					"example": [
+						"function x () {",
+						"    ...",
+						"}",
+						"",
+						"var y = new x(); // warning - a constructor with a function"
+					]
+				}
+			]
+		},
+		{
+			"name": "validthis",
+			"link": "http://jshint.com/docs/options/#validthis",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "The \"this\" keyword can often be mistakenly used in scopes where it makes no sense or may be confusing",
+			"options": [
+				{
+					"value": true,
+					"description": "Relax constructor rules",
+					"recommended": false,
+					"example": [
+						"function x () {",
+						"    this.y = true;",
+						"}",
+						"",
+						"var obj = {};",
+						"myObj.call(obj);"
+					]
+				},
+				{
+					"value": false,
+					"description": "Enforce constructor rules",
+					"recommended": false,
+					"example": [
+						"function x () {",
+						"    this.y = true; // warning",
+						"}",
+						"",
+						"var obj = {};",
+						"myObj.call(obj);"
+					]
+				}
+			]
+		},
+		{
+			"name": "withstmt",
+			"link": "http://jshint.com/docs/options/#withstmt",
+			"disable": "/* jshint ignore:start */\n...\n/* jshint ignore:end */",
+			"description": "The \"with\" keyword provides a way to access multiple properties of a single object, but can often be confusing and produce unexpected results",
+			"options": [
+				{
+					"value": true,
+					"description": "Relax constructor rules",
+					"recommended": false,
+					"example": [
+						"with (cars.sedans.european.jaguar.fType.latest) {",
+						"    wheels = 4;",
+						"    color = black;",
+						"}"
+					]
+				},
+				{
+					"value": false,
+					"description": "Enforce constructor rules",
+					"recommended": false,
+					"example": [
+						"with (cars.sedans.european.jaguar.fType.latest) { // warning",
+						"    wheels = 4;",
+						"    color = black;",
+						"}",
+						"",
+						"// prefer",
+						"var myCar = cars.sedans.european.jaguar.fType.latest;",
+						"myCar.wheels = 4;",
+						"myCar.color = black;"
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,10 @@
+{
+	"link": "http://www.jslint.com/help.html",
+	"environments": [
+		"browser",
+		"couch",
+		"devel",
+		"es6",
+		"node"
+	]
+}

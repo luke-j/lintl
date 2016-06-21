@@ -1,0 +1,30 @@
+{
+	"link": "http://eslint.org/docs/user-guide/configuring#specifying-environments",
+	"environments": [
+		"browser",
+		"node",
+		"commonjs",
+		"shared-node-browser",
+		"es6",
+		"worker",
+		"amd",
+		"mocha",
+		"jasmine",
+		"jest",
+		"phantomjs",
+		"protractor",
+		"qunit",
+		"jquery",
+		"prototypejs",
+		"shelljs",
+		"meteor",
+		"mongo",
+		"applescript",
+		"nashorn",
+		"serviceworker",
+		"atomtest",
+		"embertest",
+		"webextensions",
+		"greasemonkey"
+	]
+}
