@@ -2,6 +2,8 @@
   "name": "lintl",
   "description": "Generate static analysis config files, beautifully",
   "author": "https://github.com/luke-j",
+  "repository": "https://github.com/luke-j/lintl",
+  "lisence": "MIT",
   "scripts": {
     "watchify": "watchify -vd -p browserify-hmr -e src/main.js -o public/app.js",
     "serve": "http-server -c 1 -a localhost",
