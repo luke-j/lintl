@@ -2,7 +2,7 @@
 
 Lintl is a UI to help generate static analysis config files. Checkout the site [here](https://lintl.co).
 
-![jshint varstmt-1](https://cloud.githubusercontent.com/assets/6657011/16218033/d234a932-37bc-11e6-95cc-31843baefd04.png)
+![jshint varstmt](https://cloud.githubusercontent.com/assets/6657011/16252864/131eea4e-3875-11e6-8e58-1723e7adf8f8.png)
 ![jshint results](https://cloud.githubusercontent.com/assets/6657011/16218043/e6278414-37bc-11e6-9417-750b7cb200f5.png)
 
 ## Contributing
