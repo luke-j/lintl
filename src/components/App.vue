@@ -44,6 +44,18 @@
 		}
 	}
 
+	.breadcrumb {
+		& a {
+			text-decoration: none;
+			cursor: default;
+
+			&:hover {
+				text-decoration: none;
+				cursor: default;
+			}
+		}
+	}
+
 	@media all and (max-width:768px) {
 		main {
 			margin-top:80px;

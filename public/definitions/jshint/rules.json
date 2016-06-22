@@ -1004,7 +1004,7 @@
 					"description": "Disallow \"var\" declarations",
 					"recommended": false,
 					"example": [
-						"function() {",
+						"function example() {",
 						"    var x = 1; // error - x should be declared with let or const",
 						"    ...",
 						"}"
@@ -1015,7 +1015,7 @@
 					"description": "Allow \"var\" declarations",
 					"recommended": false,
 					"example": [
-						"function() {",
+						"function example() {",
 						"    const y = 1;",
 						"    var x = 1;",
 						"    ...",
