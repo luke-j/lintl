@@ -1,0 +1,42 @@
+version: 2
+general:
+  branches:
+    only:
+      - master
+workflows:
+  version: 2
+  master:
+    jobs:
+      - build
+machine:
+  python:
+    version: 2.7.3
+  services:
+    - docker:
+      - image: circleci/node:7.10
+dependencies:
+  pre:
+    - pip install awscli
+jobs:
+  build:
+    machine:
+      services:
+        - docker:
+          - image: circleci/node:7.10
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: |
+            npm install
+      - run:
+          name: Build
+          command: |
+            npm run build
+      - run:
+          name: Upload to S3
+          command: |
+            aws s3 sync /home/circleci/project/public/ s3://$CIRCLE_PROJECT_REPONAME.co/ \
+              --delete \
+              --acl 'public-read' \
+              --cache-control "public, max-age=31536000"
